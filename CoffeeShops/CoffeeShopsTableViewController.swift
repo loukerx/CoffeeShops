@@ -10,6 +10,9 @@ import UIKit
 
 class CoffeeShopsTableViewController: UITableViewController {
 
+    let clientID = "ACAO2JPKM1MXHQJCK45IIFKRFR2ZVL0QASMCBCG5NPJQWF2G"
+    let clientSecret = "YZCKUYJ1WHUV2QICBXUBEILZI1DMPUIDP5SHV043O04FKBHL"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +23,21 @@ class CoffeeShopsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    //MARK: Prepare Coordinates
+    private func prepareCoffeeShopsInfo(){
+        
+        let URL = NSURL(string: "https://api.foursquare.com/v2/venues/explore")!
+        
+        let parameters = [
+            "client_id": clientID,
+            "client_secret": clientSecret,
+            
+        ]
+        
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
