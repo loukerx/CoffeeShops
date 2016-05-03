@@ -23,12 +23,40 @@ class CoffeeShopsTableViewController: UITableViewController {
     private let HUDLoadingMessage = "loading"
     private let cellReuseIdentifier = "Cell"
     
+    private var appDelegate = AppDelegate()
     private var HUD_: MBProgressHUD = MBProgressHUD()
     private var tableData = NSMutableArray()
+    
+//    private var centerLocation = CLLocation(latitude: -33.8716778, longitude: 151.2061069)//QBV
+    
     
     // MARK: - Views
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        //locationManager 开启地理位置
+        if CLLocationManager.locationServicesEnabled() {
+            //Get User Current Locaiton
+            if let location = appDelegate.locationManager.location {
+                
+                self.prepareCoffeeShopsInfo(location)
+                
+            }
+        }else{
+            
+            //alert error
+            self.alertMessage("Alert Error:", message:"Please set your location service on")
+            
+        }
+        
+        
+        
+    }
+
+    //MARK: Prepare Shops Details
+    private func prepareCoffeeShopsInfo(location:CLLocation){
 
         //Loading
         HUD_ = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -36,22 +64,15 @@ class CoffeeShopsTableViewController: UITableViewController {
         HUD_.labelText = HUDLoadingMessage
         self.view.userInteractionEnabled = false
         
-        self.prepareCoffeeShopsInfo()
-        
-    }
-
-    //MARK: Prepare Shops Details
-    private func prepareCoffeeShopsInfo(){
-
-        
-        
         let URL = NSURL(string: "https://api.foursquare.com/v2/venues/explore")!
+        
+        let ll = "\(location.coordinate.latitude),\(location.coordinate.longitude)"
         
         let parameters = [
             "client_id": clientID,
             "client_secret": clientSecret,
             "v" : version,
-            "ll": "40.7,-74",
+            "ll": ll,
             "section": section,
             "sortByDistance": sortByDistance,
             "limit": limit
@@ -165,3 +186,4 @@ class CoffeeShopsTableViewController: UITableViewController {
     */
 
 }
+

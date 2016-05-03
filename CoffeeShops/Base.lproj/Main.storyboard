@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DCJ-n6-Eh6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="U5n-rx-dLE">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -96,6 +96,51 @@
             </objects>
             <point key="canvasLocation" x="1087" y="365"/>
         </scene>
+        <!--Main Table View Controller-->
+        <scene sceneID="4dl-6q-2J6">
+            <objects>
+                <tableViewController id="IRg-MA-Imx" customClass="MainTableViewController" customModule="CoffeeShops" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="z1G-Hf-k9B">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections>
+                            <tableViewSection id="9TM-dq-1e8">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="LJQ-Fv-gOR" style="IBUITableViewCellStyleDefault" id="Ma5-1G-rpu">
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ma5-1G-rpu" id="rnc-bR-2aW">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Coffee Shops" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LJQ-Fv-gOR">
+                                                    <rect key="frame" x="15" y="0.0" width="550" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="t0p-GZ-zlT" kind="show" identifier="To CoffeeShops TableView" id="oTx-2R-I7P"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="IRg-MA-Imx" id="LLZ-1i-Wh7"/>
+                            <outlet property="delegate" destination="IRg-MA-Imx" id="Lh5-ge-8hI"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="l2L-oG-KED"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFL-TP-bzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="335" y="365"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="WGn-ay-hn0">
             <objects>
@@ -126,22 +171,22 @@
             <point key="canvasLocation" x="1850" y="365"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="vVN-zb-yy5">
+        <scene sceneID="fly-w8-lrs">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DCJ-n6-Eh6" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U5n-rx-dLE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qeo-1h-iVf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MzL-eB-cck">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="t0p-GZ-zlT" kind="relationship" relationship="rootViewController" id="X7B-PO-qaA"/>
+                        <segue destination="IRg-MA-Imx" kind="relationship" relationship="rootViewController" id="V2O-L9-PxY"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Lg-j2-pdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RKU-2f-O4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="365"/>
+            <point key="canvasLocation" x="-493" y="365"/>
         </scene>
     </scenes>
 </document>
