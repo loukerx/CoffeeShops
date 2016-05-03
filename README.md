@@ -15,3 +15,4 @@ use_frameworks!
 pod 'Alamofire', '~> 3.3'
 pod 'MBProgressHUD', '~> 0.9.2'
 ```
+# run CoffeeShops.xcworkspace
