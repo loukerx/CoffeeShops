@@ -13,11 +13,9 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        //color
+        self.navigationController!.navigationBar.tintColor = UIColor.blackColor()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +35,12 @@ class MainTableViewController: UITableViewController {
         return 1
     }
 
+    // MARK: - Table view delegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

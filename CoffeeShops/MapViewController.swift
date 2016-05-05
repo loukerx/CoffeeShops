@@ -7,13 +7,30 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class MapViewController: UIViewController {
 
+    var lat:CLLocationDegrees = 0.0
+    var lng:CLLocationDegrees = 0.0
+    var addressString = ""
+    
+    private let regionRadius: CLLocationDistance = 1000
+    
+    
+    @IBOutlet weak var mkMapView: MKMapView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+      let centerLocation = CLLocation(latitude: lat, longitude: lng)//QBV
+        
+        
+        
         // Do any additional setup after loading the view.
+        self.centerMapOnLocation(centerLocation)
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,14 +39,22 @@ class MapViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: - Display Shop Location
+    private func centerMapOnLocation(location: CLLocation) {
+        
+        //Set Region
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius, regionRadius)
+        self.mkMapView.setRegion(coordinateRegion, animated: false)
+        
+        //Pin on map
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location.coordinate
+        annotation.title = addressString
+        
+        self.mkMapView.addAnnotation(annotation)
+        self.mkMapView.selectAnnotation(annotation, animated: true)//display address
+        
     }
-    */
 
 }

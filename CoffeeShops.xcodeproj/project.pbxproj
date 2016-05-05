@@ -129,10 +129,10 @@
 		AEFFC3C11CD8C8BE005BE04B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AEFFC3BD1CD8C8A0005BE04B /* CoffeeShopsTableViewCell.swift */,
-				AEFFC3BF1CD8C8B3005BE04B /* CoffeeShopsTableViewController.swift */,
-				AEFFC3C21CD8C91D005BE04B /* MapViewController.swift */,
 				AEFFC3C41CD8DADC005BE04B /* MainTableViewController.swift */,
+				AEFFC3BF1CD8C8B3005BE04B /* CoffeeShopsTableViewController.swift */,
+				AEFFC3BD1CD8C8A0005BE04B /* CoffeeShopsTableViewCell.swift */,
+				AEFFC3C21CD8C91D005BE04B /* MapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

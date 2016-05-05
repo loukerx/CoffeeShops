@@ -26,9 +26,8 @@ class CoffeeShopsTableViewController: UITableViewController {
     private var appDelegate = AppDelegate()
     private var HUD_: MBProgressHUD = MBProgressHUD()
     private var tableData = NSMutableArray()
-    
-//    private var centerLocation = CLLocation(latitude: -33.8716778, longitude: 151.2061069)//QBV
-    
+    private var timer: NSTimer?
+    private let updatingTime: NSTimeInterval = 600.0
     
     // MARK: - Views
     override func viewDidLoad() {
@@ -41,7 +40,19 @@ class CoffeeShopsTableViewController: UITableViewController {
             //Get User Current Locaiton
             if let location = appDelegate.locationManager.location {
                 
+                //Loading
+                HUD_ = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                HUD_.mode = MBProgressHUDMode.Indeterminate
+                HUD_.labelText = HUDLoadingMessage
+                self.view.userInteractionEnabled = false
+                
                 self.prepareCoffeeShopsInfo(location)
+                self.startTimer()
+            
+            }else{
+                
+                //alert error
+                self.alertMessage("Alert Error:", message:"Please set your location service on")
                 
             }
         }else{
@@ -58,11 +69,7 @@ class CoffeeShopsTableViewController: UITableViewController {
     //MARK: Prepare Shops Details
     private func prepareCoffeeShopsInfo(location:CLLocation){
 
-        //Loading
-        HUD_ = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        HUD_.mode = MBProgressHUDMode.Indeterminate
-        HUD_.labelText = HUDLoadingMessage
-        self.view.userInteractionEnabled = false
+
         
         let URL = NSURL(string: "https://api.foursquare.com/v2/venues/explore")!
         
@@ -83,15 +90,36 @@ class CoffeeShopsTableViewController: UITableViewController {
         Alamofire.request(.GET, URL, parameters: parameters as? [String : AnyObject])
             .responseJSON { response in
 
-                print(response)
                 self.view.userInteractionEnabled = true
                 MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 
+                
+
+                
                 if response.result.isSuccess{
                     if  let JSONDictionary = response.result.value as? Dictionary<String, NSObject>{
-                       print(JSONDictionary)
-                        
+                        if let res = JSONDictionary["response"] as? Dictionary<String, NSObject>{
+                          
+//                            print(res["totalResults"]!)
+                            if let groups = res["groups"] as?[Dictionary<String, NSObject>]{
+
+                                if let items = groups[0]["items"] as? [Dictionary<String, NSObject>]{
+                                    
+                                    self.tableData.removeAllObjects()//clear tableViewData
+                                    
+                                    for item in items{
+                                        self.tableData.addObject(item["venue"]!)
+                                    }
+                                }
+
+                            }
+                        }
+                      
                     }
+                    print(self.tableData.count)
+
+                    self.tableView.reloadData()
+                    
                 }else{
                     
                     self.alertMessage("servers connection fail", message: nil)
@@ -132,58 +160,99 @@ class CoffeeShopsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! CoffeeShopsTableViewCell
 
         // Configure the cell...
-        //prepare values
-        let cellDictionary = tableData[indexPath.row] as! Dictionary <String, NSObject>
-        
-        
+        if tableData.count>0{
+            //prepare values
+            
+            let cellDictionary = tableData[indexPath.row] as! Dictionary <String, NSObject>
+            let itemLocation = cellDictionary["location"] as! Dictionary <String, NSObject>
+            
+            //populate cells
+            cell.nameLabel.text = cellDictionary["name"] as? String
+            
+            var fullAddress = ""
+            if let formattedAddress = itemLocation["formattedAddress"] as? [String]{
+                for address in formattedAddress{
+                    fullAddress += address + " "
+                }
+            }
+            cell.addressLabel.text = fullAddress
+            
+            //        print (itemLocation)
+            if let distance = itemLocation["distance"] as? Int{
+                
+                cell.distanceLabel.text = "\(distance)m"
+            }
+        }
+
         return cell
     }
  
+    // MARK: - Table view delegate
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        self.performSegueWithIdentifier("To MapView", sender: self)
+
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    */
+   
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ 
+        if segue.identifier == "To MapView" {
+            
+            if let destinationVC = segue.destinationViewController as? MapViewController{
+                if let indexPath = self.tableView.indexPathForSelectedRow{
+                    
+                    if let itemDic =  self.tableData.objectAtIndex(indexPath.row) as? Dictionary<String,NSObject>{
+                        
+                        let itemLocation = itemDic["location"] as! Dictionary <String, NSObject>
+                        
+                        var fullAddress = ""
+                        if let formattedAddress = itemLocation["formattedAddress"] as? [String]{
+                            for address in formattedAddress{
+                                fullAddress += address + " "
+                            }
+                        }
+                        
+                        destinationVC.lat = itemLocation["lat"] as! CLLocationDegrees
+                        destinationVC.lng = itemLocation["lng"] as! CLLocationDegrees
+                        destinationVC.addressString = fullAddress
+                    }
+                }
+            }
+        }
 
+    }
+    
+    //MARK: - Update Data
+    private func startTimer() {
+        
+        if timer == nil{
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(self.updatingTime, target: self, selector: #selector(CoffeeShopsTableViewController.updateLocation), userInfo: nil, repeats: true)
+
+                    NSRunLoop.currentRunLoop().run()
+
+                
+            }
+
+            
+        }
+    }
+    
+    func updateLocation() {
+    
+        if let location = appDelegate.locationManager.location {
+            //            print(location.coordinate)
+            
+            self.prepareCoffeeShopsInfo(location)
+            
+        }
+    
+    
+    }
 }
 
