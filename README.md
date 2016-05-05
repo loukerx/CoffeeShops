@@ -9,7 +9,7 @@
 
 
 #How to run my code
-## Install CocoaPod:
+* Install CocoaPod:
 ```
 platform :ios, '8.0'
 use_frameworks!
@@ -20,9 +20,7 @@ pod 'MBProgressHUD', '~> 0.9.2'
 
 * cd ~/Path/To/Folder/Containing/CoffeeShops
 * pod install
-
-
-## run CoffeeShops.xcworkspace
+* run CoffeeShops.xcworkspace
 
 # What approach I took.
 * I read the details of the the question and get a fully understanding about this question.
