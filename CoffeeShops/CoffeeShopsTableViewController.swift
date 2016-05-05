@@ -27,7 +27,7 @@ class CoffeeShopsTableViewController: UITableViewController {
     private var HUD_: MBProgressHUD = MBProgressHUD()
     internal var tableData = NSMutableArray()
     private var timer: NSTimer?
-    private let updatingTime: NSTimeInterval = 600.0
+    private let updatingTime: NSTimeInterval = 300.0
     
     // MARK: - Views
     override func viewDidLoad() {
