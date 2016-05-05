@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="U5n-rx-dLE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="U5n-rx-dLE">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,8 +8,8 @@
         <!--Coffee Shops-->
         <scene sceneID="VJi-9v-A6F">
             <objects>
-                <tableViewController id="t0p-GZ-zlT" customClass="CoffeeShopsTableViewController" customModule="CoffeeShops" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="66" sectionHeaderHeight="18" sectionFooterHeight="18" id="bfj-V6-mP4">
+                <tableViewController storyboardIdentifier="CoffeeShopsTableViewController" id="t0p-GZ-zlT" customClass="CoffeeShopsTableViewController" customModule="CoffeeShops" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="60" sectionHeaderHeight="18" sectionFooterHeight="18" id="bfj-V6-mP4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -144,7 +144,7 @@
         <!--Map View Controller-->
         <scene sceneID="WGn-ay-hn0">
             <objects>
-                <viewController id="8E0-7L-8xb" customClass="MapViewController" customModule="CoffeeShops" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="8E0-7L-8xb" customClass="MapViewController" customModule="CoffeeShops" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LOw-As-cZo"/>
                         <viewControllerLayoutGuide type="bottom" id="LpH-bo-nGu"/>

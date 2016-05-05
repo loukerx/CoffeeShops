@@ -25,7 +25,7 @@ class CoffeeShopsTableViewController: UITableViewController {
     
     private var appDelegate = AppDelegate()
     private var HUD_: MBProgressHUD = MBProgressHUD()
-    private var tableData = NSMutableArray()
+    internal var tableData = NSMutableArray()
     private var timer: NSTimer?
     private let updatingTime: NSTimeInterval = 600.0
     
@@ -236,23 +236,16 @@ class CoffeeShopsTableViewController: UITableViewController {
 
                     NSRunLoop.currentRunLoop().run()
 
-                
             }
-
-            
         }
     }
     
     func updateLocation() {
     
         if let location = appDelegate.locationManager.location {
-            //            print(location.coordinate)
-            
             self.prepareCoffeeShopsInfo(location)
             
         }
-    
-    
     }
 }
 

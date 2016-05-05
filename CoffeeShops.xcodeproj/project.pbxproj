@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5BB8143732A6B7A23B2A4719 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9158C6DECB88D9BFEDEB43EC /* Pods.framework */; };
+		AEE207291CDB2E02004A2574 /* CoffeeShopsTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE207281CDB2E02004A2574 /* CoffeeShopsTableViewControllerTests.swift */; };
 		AEFFC39A1CD8C7AF005BE04B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFFC3991CD8C7AF005BE04B /* AppDelegate.swift */; };
 		AEFFC39F1CD8C7AF005BE04B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEFFC39D1CD8C7AF005BE04B /* Main.storyboard */; };
 		AEFFC3A11CD8C7AF005BE04B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEFFC3A01CD8C7AF005BE04B /* Assets.xcassets */; };
 		AEFFC3A41CD8C7AF005BE04B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEFFC3A21CD8C7AF005BE04B /* LaunchScreen.storyboard */; };
-		AEFFC3AF1CD8C7AF005BE04B /* CoffeeShopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFFC3AE1CD8C7AF005BE04B /* CoffeeShopsTests.swift */; };
 		AEFFC3BE1CD8C8A0005BE04B /* CoffeeShopsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFFC3BD1CD8C8A0005BE04B /* CoffeeShopsTableViewCell.swift */; };
 		AEFFC3C01CD8C8B3005BE04B /* CoffeeShopsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFFC3BF1CD8C8B3005BE04B /* CoffeeShopsTableViewController.swift */; };
 		AEFFC3C31CD8C91D005BE04B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFFC3C21CD8C91D005BE04B /* MapViewController.swift */; };
@@ -33,6 +33,7 @@
 		597F88F7E79FD605BFFE75F1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5C0CC5E7F2E57D5345B2628C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9158C6DECB88D9BFEDEB43EC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEE207281CDB2E02004A2574 /* CoffeeShopsTableViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeShopsTableViewControllerTests.swift; sourceTree = "<group>"; };
 		AEFFC3961CD8C7AF005BE04B /* CoffeeShops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeShops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEFFC3991CD8C7AF005BE04B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEFFC39E1CD8C7AF005BE04B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		AEFFC3A31CD8C7AF005BE04B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEFFC3A51CD8C7AF005BE04B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEFFC3AA1CD8C7AF005BE04B /* CoffeeShopsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoffeeShopsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEFFC3AE1CD8C7AF005BE04B /* CoffeeShopsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeShopsTests.swift; sourceTree = "<group>"; };
 		AEFFC3B01CD8C7AF005BE04B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEFFC3BD1CD8C8A0005BE04B /* CoffeeShopsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeShopsTableViewCell.swift; sourceTree = "<group>"; };
 		AEFFC3BF1CD8C8B3005BE04B /* CoffeeShopsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeShopsTableViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		AEFFC3AD1CD8C7AF005BE04B /* CoffeeShopsTests */ = {
 			isa = PBXGroup;
 			children = (
-				AEFFC3AE1CD8C7AF005BE04B /* CoffeeShopsTests.swift */,
+				AEE207281CDB2E02004A2574 /* CoffeeShopsTableViewControllerTests.swift */,
 				AEFFC3B01CD8C7AF005BE04B /* Info.plist */,
 			);
 			path = CoffeeShopsTests;
@@ -301,7 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEFFC3AF1CD8C7AF005BE04B /* CoffeeShopsTests.swift in Sources */,
+				AEE207291CDB2E02004A2574 /* CoffeeShopsTableViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +423,7 @@
 			baseConfigurationReference = 597F88F7E79FD605BFFE75F1 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = CoffeeShops/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -436,6 +437,7 @@
 			baseConfigurationReference = 5C0CC5E7F2E57D5345B2628C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = CoffeeShops/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -448,10 +450,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CoffeeShopsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YinHua.CoffeeShopsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CoffeeShops.app/CoffeeShops";
 			};
 			name = Debug;
@@ -460,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CoffeeShopsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YinHua.CoffeeShopsTests;
