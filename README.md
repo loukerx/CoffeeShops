@@ -3,7 +3,7 @@
 
 # Using
 * Xcode 7 
-* Swift 2.1
+* Swift 2.2
 * iOS 8.1+
 
 
@@ -26,7 +26,7 @@ pod 'MBProgressHUD', '~> 0.9.2'
 * I read the details of the the question and get a fully understanding about this question.
 * I draw a brief idea about the UX which includes a tableview for coffee shops and a mapview for displaying location
 * I read foursquare API document, I choose "https://api.foursquare.com/v2/venues/explore" which is more suitable for this task.
-* than coding and testing for this question.
+* Do coding and testing for this question.
 * I use a push segue to display location on a map
 * I created an extra static tableView as a main entry, because I will display a alert for user who first time open this app and who needs to turn location service on.
 
